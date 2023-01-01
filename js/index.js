@@ -14,12 +14,14 @@ const scorecard = document.querySelector('.score-container__score--number')
 
 function getLocalStorage() {
     localStorage.getItem('score')
-    scorecard.textContent = localStorage.score
+    scorecard.textContent = localStorage.score || 0
 }
 
-if (scorecard.textContent !== 0) {
-    getLocalStorage()
-}
+
+getLocalStorage()
+
+    
+
 
 async function renderResultsScreen(choice) {
     await flipScreen()
@@ -87,13 +89,15 @@ function compareAndChooseWinner(player, computer) {
         || player[0] === 'scissors' && computer[0] === 'rock' 
         || player[0] === 'rock' && computer[0] === 'paper') {
             result.textContent = 'YOU LOSE'
-                localStorage.setItem('score', JSON.stringify(getScore - 1))
+                if(scorecard.textContent !== '0') {
+                    localStorage.setItem('score', JSON.stringify(getScore - 1))
                 scorecard.textContent = localStorage.score
-            
+                } 
         }
         resultsContainerBox.classList.remove('inactive')
         resultsContainerBox.classList.add('active')
         gameStarted=false
+        console.log(scorecard.textContent !== 0)
     }, 3000);
    
 }

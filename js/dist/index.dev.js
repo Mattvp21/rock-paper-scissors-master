@@ -15,12 +15,10 @@ var scorecard = document.querySelector('.score-container__score--number');
 
 function getLocalStorage() {
   localStorage.getItem('score');
-  scorecard.textContent = localStorage.score;
+  scorecard.textContent = localStorage.score || 0;
 }
 
-if (scorecard.textContent !== 0) {
-  getLocalStorage();
-}
+getLocalStorage();
 
 function renderResultsScreen(choice) {
   return regeneratorRuntime.async(function renderResultsScreen$(_context) {
@@ -103,13 +101,17 @@ function compareAndChooseWinner(player, computer) {
       scorecard.textContent = localStorage.score;
     } else if (player[0] === 'paper' && computer[0] === 'scissors' || player[0] === 'scissors' && computer[0] === 'rock' || player[0] === 'rock' && computer[0] === 'paper') {
       result.textContent = 'YOU LOSE';
-      localStorage.setItem('score', JSON.stringify(getScore - 1));
-      scorecard.textContent = localStorage.score;
+
+      if (scorecard.textContent !== '0') {
+        localStorage.setItem('score', JSON.stringify(getScore - 1));
+        scorecard.textContent = localStorage.score;
+      }
     }
 
     resultsContainerBox.classList.remove('inactive');
     resultsContainerBox.classList.add('active');
     gameStarted = false;
+    console.log(scorecard.textContent !== 0);
   }, 3000);
 } //Button functionality
 
