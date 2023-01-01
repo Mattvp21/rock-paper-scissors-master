@@ -1,0 +1,275 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  color: white;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(#1f3756, #141539);
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+}
+
+.score-container {
+  width: 300px;
+  border: 1px white solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.score-container__image--image {
+  height: 75px;
+  width: 75px;
+}
+
+.score-container__score {
+  margin-left: auto;
+  background-color: #ececec;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.score-container__score--score {
+  color: #1f3756;
+  font-size: .75rem;
+}
+
+.score-container__score--number {
+  color: #141539;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.game-container {
+  width: 300px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 4rem;
+  background-image: url("/../images/bg-triangle.svg");
+  background-repeat: no-repeat;
+}
+
+.game-container__button {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100px;
+  border-radius: 50%;
+  border-width: 10px;
+  border-style: solid;
+}
+
+.game-container__button--image {
+  width: 50%;
+  height: 50%;
+}
+
+#paper {
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(white)) padding-box, -webkit-gradient(linear, left top, right top, from(#4865f4), to(#5671f5)) border-box;
+  background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4865f4, #5671f5) border-box;
+  border: 10px solid transparent;
+  -webkit-transform: translate(-1rem, -2rem);
+          transform: translate(-1rem, -2rem);
+}
+
+#scissors {
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(white)) padding-box, -webkit-gradient(linear, left top, right top, from(#ec9e0e), to(#eca922)) border-box;
+  background: linear-gradient(white, white) padding-box, linear-gradient(to right, #ec9e0e, #eca922) border-box;
+  border: 10px solid transparent;
+  -webkit-transform: translate(1rem, -2rem);
+          transform: translate(1rem, -2rem);
+}
+
+#rock {
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(white)) padding-box, -webkit-gradient(linear, left top, right top, from(#dc2e4e), to(#dd405d)) border-box;
+  background: linear-gradient(white, white) padding-box, linear-gradient(to right, #dc2e4e, #dd405d) border-box;
+  border: 10px solid transparent;
+  -webkit-transform: translate(0.5rem, 12rem);
+          transform: translate(0.5rem, 12rem);
+}
+
+.rules-button-container {
+  border: 1px white solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 150px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.rules-button-container:hover {
+  background-color: white;
+  color: #1f3756;
+}
+
+.rules-container {
+  position: absolute;
+  top: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 90vw;
+  opacity: .975;
+  background-color: white;
+  visibility: hidden;
+}
+
+.rules-container__header {
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding: 2rem;
+}
+
+.rules-container__header--rules {
+  font-size: 2rem;
+  color: black;
+}
+
+.rules-container__header--x {
+  margin-left: auto;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #ececec;
+  cursor: pointer;
+}
+
+.rules-container__image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3rem;
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.inactive {
+  display: none;
+}
+
+@media (min-width: 650px) {
+  .score-container {
+    width: 50%;
+  }
+  .score-container__image--image {
+    height: 125px;
+    width: 125px;
+  }
+  .score-container__score {
+    width: 8rem;
+  }
+  .score-container__score--score {
+    font-size: 1.25rem;
+  }
+  .score-container__score--number {
+    font-size: 3rem;
+  }
+  .game-container {
+    width: 400px;
+    height: 400px;
+    background-size: contain;
+  }
+  .game-container__button {
+    width: 125px;
+    height: 125px;
+  }
+  #paper {
+    -webkit-transform: translate(-4rem, -2rem);
+            transform: translate(-4rem, -2rem);
+  }
+  #scissors {
+    -webkit-transform: translate(4rem, -2rem);
+            transform: translate(4rem, -2rem);
+  }
+  #rock {
+    -webkit-transform: translate(0rem, 18rem);
+            transform: translate(0rem, 18rem);
+  }
+  .rules-button-container {
+    margin-top: 0;
+    margin-left: auto;
+  }
+  .rules-container {
+    width: 500px;
+    height: 500px;
+    top: 5rem;
+  }
+}
+/*# sourceMappingURL=main.css.map */

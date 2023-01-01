@@ -1,0 +1,249 @@
+$backgroundGradientOne: hsl(214,47%,23%);
+$backgroundGradientTwo: hsl(237, 49%, 15%);
+
+$scissorsGradientOne: hsl(39, 89%, 49%);
+$scissorsGradientTwo: hsl(40, 84%, 53%);
+
+$paperGradientOne: hsl(230, 89%, 62%);
+$paperGradientTwo: hsl(230, 89%, 65%);
+
+$rockGradientOne: hsl(349, 71%, 52%);
+$rockGradientTwo: hsl(349, 70%, 56%);
+
+$grayWhiteScoreBackground: rgb(236, 236, 236);
+
+$font-color: white;
+
+@mixin background-color {
+    background: radial-gradient($backgroundGradientOne, $backgroundGradientTwo)
+  }
+
+@mixin buttonBackground {
+    width:150px;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 1rem;
+
+    &:hover {
+        background-color: white;
+        color: $backgroundGradientOne;
+    }
+}
+
+@mixin desktopSize {
+    .score-container {
+        width: 50%;
+        &__image {
+            &--image {
+                height: 125px;
+                width: 125px;
+            }
+        }
+        &__score {
+            width: 8rem;
+            &--score {            
+                font-size: 1.25rem;
+            }
+    
+            &--number {             
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .game-container {
+        width: 400px;
+        height: 400px;
+        background-size: contain;
+        &__button {
+            width: 125px;
+            height: 125px;
+        }
+    }
+
+    #paper {
+        transform: translate(-4rem, -2rem);
+     }
+    
+    #scissors {
+        transform: translate(4rem, -2rem);
+      }
+    
+    #rock {
+        transform: translate(0rem ,18rem);
+      }
+
+    .rules-button-container {
+        margin-top: 0;
+        margin-left: auto;
+    }
+
+    .rules-container {
+        width: 500px;
+        height: 500px;
+        top: 5rem;
+    }  
+}
+
+@mixin whiteBorder {
+    border: 1px white solid;
+    display: flex;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family:  'Barlow Semi Condensed', sans-serif;
+    color: $font-color;
+}
+  
+body {
+    min-height: 100vh;
+    @include background-color;
+  }
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;  
+}
+
+.score-container {
+    width: 300px;
+    @include whiteBorder();
+
+    &__image {
+        &--image {
+            height: 75px;
+            width: 75px;
+        }
+    }
+    &__score {
+        margin-left: auto;
+        background-color: $grayWhiteScoreBackground;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &--score {
+            color: $backgroundGradientOne;
+            font-size: .75rem;
+        }
+        &--number {
+            color: $backgroundGradientTwo;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+    }
+  }
+
+  .game-container {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    background-image: url("/../images/bg-triangle.svg");
+    background-repeat: no-repeat;
+    &__button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        border-radius: 50%;
+        border-width: 10px;
+        border-style: solid;     
+        &--image {
+            width: 50%;
+            height: 50%;
+        }
+    }
+  }
+
+#paper {
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, $paperGradientOne, $paperGradientTwo) border-box;
+    border: 10px solid transparent;
+    transform: translate(-1rem, -2rem);
+  }
+
+#scissors {
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, $scissorsGradientOne, $scissorsGradientTwo) border-box;
+    border: 10px solid transparent;
+    transform: translate(1rem, -2rem);
+  }
+
+#rock {
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, $rockGradientOne, $rockGradientTwo) border-box;
+    border: 10px solid transparent;
+    transform: translate(.5rem ,12rem);
+  }
+
+.rules-button-container {
+    @include whiteBorder();
+   @include buttonBackground();
+}
+
+.rules-container {
+    position: absolute;
+    top: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    width: 90vw;
+    opacity: .975;
+    background-color: white;
+    visibility: hidden;
+    &__header {       
+        height: 10%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        padding: 2rem;
+        &--rules {
+            font-size: 2rem;
+            color: black;
+        }
+        &--x {
+            margin-left: auto;
+            font-weight: 800;
+            font-size: 2rem;
+            color: $grayWhiteScoreBackground;
+            cursor: pointer;
+        }
+    }
+    &__image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;   
+    }
+  }
+
+.active {
+    display: flex;
+    
+}
+
+.inactive {
+    display: none;
+}
+
+
+
+@media(min-width: 650px) {
+    @include desktopSize;
+}

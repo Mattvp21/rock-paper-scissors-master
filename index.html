@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./sass/dist/main.css">
+  <link rel="stylesheet" href="./sass/dist/results.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  
+ 
+  <!-- Score -->
+  <!-- Rules -->
+
+  <!-- You Picked
+  The House Picked
+
+  You Win
+  You Lose
+
+  Play Again -->
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="score-container">
+      <div class="score-container__image">
+        <img class="score-container__image--image" src="./images/logo.svg" alt="logo">
+      </div>
+      <div class="score-container__score">
+          <p class="score-container__score--score">SCORE</p>
+          <p class="score-container__score--number">0</p>
+      </div>
+    </div>
+
+    <div  class="game-container active">
+      <!-- <img class="game-container__image" src="./images/bg-triangle.svg" alt="triangle"> -->
+      <div onclick="renderResultsScreen('paper')" id="paper" class="game-container__button">
+        <img class="game-container__button--image" src="./images/icon-paper.svg" alt="paper">
+      </div>
+      
+      <div onclick="renderResultsScreen('rock')" id="rock" class="game-container__button">
+        <img src="./images/icon-rock.svg" alt="rock">
+      </div>
+
+      <div onclick="renderResultsScreen('scissors')" id="scissors" class="game-container__button">
+        <img src="./images/icon-scissors.svg" alt="scissors">
+      </div>
+    </div>
+
+    <div class="results-container inactive">
+      <div class="results-container__pick">
+        <p class="results-container__pick--text">YOU PICKED</p>
+        <div id="player" class="results-container__pick--player">
+          
+        </div>
+      </div>
+        
+        <div class="results-container__box inactive">
+          <p class="results-container__box--result"></p>
+          <div id="button" class="results-container__box--button">
+            PLAY AGAIN
+          </div>
+        </div>
+        <div class="results-container__pick">
+          <p class="results-container__pick--text">THE HOUSE PICKED</p>
+          <div id="computer" class="results-container__pick--computer">
+            
+          </div>
+        </div>
+    </div>
+
+    <div class="rules-button-container">
+      RULES
+    </div>
+
+    <div class="rules-container">
+      <div class="rules-container__header">
+          <p class='rules-container__header--rules'>RULES</p>
+          <p class='rules-container__header--x'>X</p>
+      </div>
+      <div class="rules-container__image">
+        <img alt="rules" src="./images/image-rules.svg">
+      </div>
+    </div>
+
+    
+  
+    
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </main>
+  <script src="js/index.js"></script>
+</body>
+</html>

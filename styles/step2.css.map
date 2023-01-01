@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../sass/step2.scss"
+    ],
+    "names": [],
+    "file": "step2.css"
+}
