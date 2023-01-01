@@ -118,5 +118,5 @@ xButton.addEventListener('click', () => {
 })
 
 playAgainButton.addEventListener('click', () => {
-    window.location = '/'
+    window.location.href = '/rock-paper-scissors-master'
 })

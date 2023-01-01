@@ -127,5 +127,5 @@ xButton.addEventListener('click', function () {
   rulesContainer.classList.toggle('rules-active');
 });
 playAgainButton.addEventListener('click', function () {
-  window.location = '/';
+  window.location.href = '/rock-paper-scissors-master';
 });
