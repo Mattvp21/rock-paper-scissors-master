@@ -20,17 +20,27 @@ function getLocalStorage() {
 
 getLocalStorage()
 
+
+
+
+ function renderResultsScreen(choice) {
+    new Promise((resolve,reject) => {
+        flipScreen()
+        resolve()
+    }
+    ).then(()=> {
+        setPlayersChoice(choice)
+    }).then(() => {
+        setComputersChoice()
+    }).then(() => {
+        compareAndChooseWinner(playersChoice, computerChoice)
+        
+    }).catch((err) => reject(err))  
     
-
-
-async function renderResultsScreen(choice) {
-    await flipScreen()
-    await setPlayersChoice(choice)
-    await setComputersChoice()
-    await compareAndChooseWinner(playersChoice, computerChoice)
+    
 }
 
-function flipScreen() {
+ function flipScreen() {
     gameStarted = true;
     setTimeout(() => {
         gameContainer.classList.remove('active')
@@ -40,7 +50,7 @@ function flipScreen() {
     }, 500);
 }
 
-function setPlayersChoice(choice) {
+ function setPlayersChoice(choice) {
     setTimeout(() => { 
         const playerChoiceBox = document.createElement('div');
         const playerChoiceImage = document.createElement('img');
@@ -55,7 +65,7 @@ function setPlayersChoice(choice) {
     console.log(playersChoice)
 }
 
-function setComputersChoice() {
+ function setComputersChoice() {
     setTimeout(() => {
         let computerChoiceNumber = Math.floor(Math.random() * computerChoices.length);
         let computerChosen = computerChoices[computerChoiceNumber]
@@ -72,7 +82,7 @@ function setComputersChoice() {
    
 }
 
-function compareAndChooseWinner(player, computer) {
+ function compareAndChooseWinner(player, computer) {
     setTimeout(() => {
         let getScore = JSON.parse(localStorage.getItem('score'))
         if(player[0] === computer[0]) {
@@ -118,5 +128,5 @@ xButton.addEventListener('click', () => {
 })
 
 playAgainButton.addEventListener('click', () => {
-    window.location.href; 
+    window.location.href
 })
