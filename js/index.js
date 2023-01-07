@@ -54,7 +54,7 @@ getLocalStorage()
     setTimeout(() => { 
         const playerChoiceBox = document.createElement('div');
         const playerChoiceImage = document.createElement('img');
-        playerChoiceImage.setAttribute('src', `../images/icon-${choice}.svg`);
+        playerChoiceImage.setAttribute('src', `./images/icon-${choice}.svg`);
         playerChoiceImage.setAttribute('alt', choice);
         playerChoiceBox.setAttribute('id', choice);
         playerChoiceBox.classList.add("game-container__button");
@@ -71,7 +71,7 @@ getLocalStorage()
         let computerChosen = computerChoices[computerChoiceNumber]
         const computerChoiceBox = document.createElement('div');
         const computerChoiceImage = document.createElement('img');
-        computerChoiceImage.setAttribute('src', `../images/icon-${computerChosen}.svg`)
+        computerChoiceImage.setAttribute('src', `./images/icon-${computerChosen}.svg`)
         computerChoiceImage.setAttribute('alt', computerChosen)
         computerChoiceBox.setAttribute('id', computerChosen)
         computerChoiceBox.classList.add("game-container__button")
