@@ -59,7 +59,7 @@ main {
   display: flex;
   justify-content: center;
   margin-top: 4rem;
-  background-image: url("/../images/bg-triangle.svg");
+  background-image: url("../../images/bg-triangle.svg");
   background-repeat: no-repeat;
 }
 .game-container__button {

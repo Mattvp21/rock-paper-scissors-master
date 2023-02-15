@@ -1,6 +1,6 @@
 let playersChoice = []
 let computerChoice = []
-let gameStarted = false;
+
 const computerChoices = ['paper', 'scissors', 'rock'];
 
 const gameContainer = document.querySelector('.game-container');
@@ -17,37 +17,34 @@ function getLocalStorage() {
     scorecard.textContent = localStorage.score || 0
 }
 
-
-getLocalStorage()
-
-
-
-
- function renderResultsScreen(choice) {
+function renderResultsScreen(choice) {
     new Promise((resolve,reject) => {
         flipScreen()
         resolve()
     }
     ).then(()=> {
-        setPlayersChoice(choice)
+        setTimeout(() => {
+            setPlayersChoice(choice)
+        }, 500);
     }).then(() => {
-        setComputersChoice()
-    }).then(() => {
-        compareAndChooseWinner(playersChoice, computerChoice)
+        setTimeout(() => {
+            setComputersChoice()
+        }, 1000);
         
+    }).then(() => {
+        setTimeout(() => {
+            compareAndChooseWinner(playersChoice, computerChoice)
+        }, 3500);  
     }).catch((err) => reject(err))  
     
     
 }
 
  function flipScreen() {
-    gameStarted = true;
-    setTimeout(() => {
         gameContainer.classList.remove('active')
         gameContainer.classList.add('inactive')
         resultsContainer.classList.remove('inactive')
         resultsContainer.classList.add('active')
-    }, 500);
 }
 
  function setPlayersChoice(choice) {
@@ -58,11 +55,11 @@ getLocalStorage()
         playerChoiceImage.setAttribute('alt', choice);
         playerChoiceBox.setAttribute('id', choice);
         playerChoiceBox.classList.add("game-container__button");
-       playerChoiceBox.appendChild(playerChoiceImage);
+        playerChoiceBox.appendChild(playerChoiceImage);
         playerBox.appendChild(playerChoiceBox);
         playersChoice.push(choice)
     }, 1000);
-    console.log(playersChoice)
+   
 }
 
  function setComputersChoice() {
@@ -82,22 +79,29 @@ getLocalStorage()
    
 }
 
+
  function compareAndChooseWinner(player, computer) {
-    setTimeout(() => {
+    const draw = player[0] === computer[0];
+    
+    const winner = player[0] === 'paper' && computer[0] === 'rock' 
+    || player[0] === 'scissors' && computer[0] === 'paper' 
+    || player[0] === 'rock' && computer[0] === 'scissors';
+
+    const loser =player[0] === 'paper' && computer[0] === 'scissors' 
+    || player[0] === 'scissors' && computer[0] === 'rock' 
+    || player[0] === 'rock' && computer[0] === 'paper';
+
+    
         let getScore = JSON.parse(localStorage.getItem('score'))
-        if(player[0] === computer[0]) {
+        if(draw) {
             result.textContent = 'DRAW'  
         } 
-        else if(player[0] === 'paper' && computer[0] === 'rock' 
-        || player[0] === 'scissors' && computer[0] === 'paper' 
-        || player[0] === 'rock' && computer[0] === 'scissors') {
+        else if(winner) {
             result.textContent = 'YOU WIN'
             localStorage.setItem('score', JSON.stringify(getScore + 1)) 
             scorecard.textContent = localStorage.score
         }
-         else if (player[0] === 'paper' && computer[0] === 'scissors' 
-        || player[0] === 'scissors' && computer[0] === 'rock' 
-        || player[0] === 'rock' && computer[0] === 'paper') {
+         else if (loser) {
             result.textContent = 'YOU LOSE'
                 if(scorecard.textContent !== '0') {
                     localStorage.setItem('score', JSON.stringify(getScore - 1))
@@ -106,9 +110,7 @@ getLocalStorage()
         }
         resultsContainerBox.classList.remove('inactive')
         resultsContainerBox.classList.add('active')
-        gameStarted=false
-        console.log(scorecard.textContent !== 0)
-    }, 3000);
+    ;
    
 }
 //Button functionality
@@ -128,5 +130,7 @@ xButton.addEventListener('click', () => {
 })
 
 playAgainButton.addEventListener('click', () => {
-    window.location.href
+    window.location.href = '/rock-paper-scissors-master'
 })
+
+getLocalStorage()
